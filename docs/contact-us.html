@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Pages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #222;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #007aff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 30px;
+      color: #666;
+    }
+    /* Split-screen Contact Page */
+    .split-screen {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+    .left-pane, .right-pane {
+      flex: 1;
+      padding: 20px;
+    }
+    .left-pane {
+      background-color: #f9f9f9;
+      border-right: 1px solid #ddd;
+    }
+    .right-pane {
+      background-color: #fff;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group button {
+      background-color: #007aff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Privacy Policy Page -->
+<div id="policy-page" style="display: none;">
+  <h1 id="policy-app-name">Privacy Policy</h1>
+  <div id="policy-content">
+    <!-- Policy content will be dynamically generated -->
+  </div>
+  <footer>
+    &copy; <span id="policy-year"></span> <span id="policy-footer-name"></span>. All rights reserved.
+  </footer>
+</div>
+
+<!-- Contact Page -->
+<div id="contact-page" style="display: none;">
+  <div class="split-screen">
+    <div class="left-pane">
+      <h1 id="contact-app-name"></h1>
+      <p id="app-description"></p>
+    </div>
+    <div class="right-pane">
+      <h2>Contact Us</h2>
+      <p>Email: <a id="contact-email" href=""></a></p>
+      <p>Phone: <span id="contact-phone"></span></p>
+      <p>Address: <span id="contact-address"></span></p>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="Type your message" required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const jsonPath = './application-info.json'; // Path to JSON file
+
+  // Load data and render a specific page
+  async function loadData(page) {
+    try {
+      const response = await fetch(jsonPath);
+      const data = await response.json();
+
+      if (page === 'policy') {
+        renderPrivacyPolicy(data);
+      } else if (page === 'contact') {
+        renderContactPage(data);
+      }
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
+  }
+
+  // Render Privacy Policy
+  function renderPrivacyPolicy(data) {
+    document.getElementById('policy-app-name').innerText = `${data.app_name} - Privacy Policy`;
+    document.getElementById('policy-footer-name').innerText = data.app_name;
+    document.getElementById('policy-year').innerText = new Date().getFullYear();
+
+    const policyContent = `
+      <p>${data.app_purpose}</p>
+      <h2>Data We Collect</h2>
+      <p>We collect the following data:</p>
+      <ul>
+        <li>Personal Info: ${data.data_collection.personal_info.join(', ')}</li>
+        <li>Usage Data: ${data.data_collection.usage_data.join(', ')}</li>
+        <li>Location Data: ${data.data_collection.location_data}</li>
+      </ul>
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:${data.contact_email}">${data.contact_email}</a></p>
+    `;
+
+    document.getElementById('policy-content').innerHTML = policyContent;
+    document.getElementById('policy-page').style.display = 'block';
+  }
+
+  // Render Contact Page
+  function renderContactPage(data) {
+    document.getElementById('contact-app-name').innerText = data.app_name;
+    document.getElementById('app-description').innerText = data.description;
+    document.getElementById('contact-email').innerText = data.contact_email;
+    document.getElementById('contact-email').href = `mailto:${data.contact_email}`;
+    document.getElementById('contact-phone').innerText = data.contact_phone;
+    document.getElementById('contact-address').innerText = data.contact_address;
+
+    document.getElementById('contact-page').style.display = 'block';
+  }
+
+  // Call `loadData` with the desired page ('policy' or 'contact')
+  // Example: Uncomment one of the following lines to display the desired page
+  // loadData('policy'); // Load Privacy Policy
+  // loadData('contact'); // Load Contact Us
+</script>
+
+</body>
+</html>
