@@ -3,41 +3,56 @@
   "app_type": "Productivity Tool",
   "app_purpose": "Helps users manage their tasks and improve productivity.",
   "description": "This app is designed to help users organize their tasks, set priorities, and achieve their goals efficiently.",
-  "data_collection": {
-    "personal_info": ["Name", "Email"],
-    "usage_data": ["App activity", "Device type"],
-    "location_data": "Approximate location (if allowed by the user)"
-  },
-  "data_purpose": "To provide better services, improve app functionality, and personalize user experience.",
-  "collection_methods": ["User input", "Automatic data tracking"],
-  "data_sharing": {
-    "third_parties": [
-      {
-        "party_name": "Analytics Provider",
-        "data_shared": ["Usage data"],
-        "purpose": "To analyze app performance and improve user experience."
-      }
+  "privacy_policy_info": {
+    "data_collection": {
+      "personal_info": [
+        "Name",
+        "Email"
+      ],
+      "usage_data": [
+        "App activity",
+        "Device type"
+      ],
+      "location_data": "Approximate location (if allowed by the user)"
+    },
+    "data_purpose": "To provide better services, improve app functionality, and personalize user experience.",
+    "collection_methods": [
+      "User input",
+      "Automatic data tracking"
     ],
-    "legal_disclosure": "Data may be shared if required by law or to protect user safety."
-  },
-  "user_rights": [
-    "Access their personal data",
-    "Request deletion of their data",
-    "Withdraw consent for data collection"
-  ],
-  "contact_email": "support@yourapp.com",
-  "contact_phone": "+1234567890",
-  "contact_address": "123 App Street, Tech City, Country",
-  "data_security": {
-    "measures": [
-      "Encryption during transmission",
-      "Secure servers",
-      "Access controls for sensitive data"
+    "data_sharing": {
+      "third_parties": [
+        {
+          "party_name": "Analytics Provider",
+          "data_shared": [
+            "Usage data"
+          ],
+          "purpose": "To analyze app performance and improve user experience."
+        }
+      ],
+      "legal_disclosure": "Data may be shared if required by law or to protect user safety."
+    },
+    "user_rights": [
+      "Access their personal data",
+      "Request deletion of their data",
+      "Withdraw consent for data collection"
     ],
-    "disclaimer": "While we strive to protect your data, no method of transmission or storage is 100% secure."
+    "data_security": {
+      "measures": [
+        "Encryption during transmission",
+        "Secure servers",
+        "Access controls for sensitive data"
+      ],
+      "disclaimer": "While we strive to protect your data, no method of transmission or storage is 100% secure."
+    },
+    "policy_changes": {
+      "change_notification": "Users will be notified via in-app notifications and email.",
+      "recommendation": "We encourage users to review this policy periodically."
+    }
   },
-  "policy_changes": {
-    "change_notification": "Users will be notified via in-app notifications and email.",
-    "recommendation": "We encourage users to review this policy periodically."
+  "contact_info": {
+    "email": "support@yourapp.com",
+    "phone": "+1234567890",
+    "address": "123 App Street, Tech City, Country"
   }
 }
