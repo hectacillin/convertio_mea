@@ -96,40 +96,40 @@
         <h2>1. Data We Collect</h2>
         <p>We may collect the following types of data:</p>
         <ul>
-          <li><strong>Personal Information:</strong> ${data.data_collection.personal_info.join(', ') || 'None'}</li>
-          <li><strong>Usage Data:</strong> ${data.data_collection.usage_data.join(', ') || 'None'}</li>
-          <li><strong>Location Data:</strong> ${data.data_collection.location_data || 'None'}</li>
+          <li><strong>Personal Information:</strong> ${data.privacy_policy_info.data_collection.personal_info.join(', ') || 'None'}</li>
+          <li><strong>Usage Data:</strong> ${data.privacy_policy_info.data_collection.usage_data.join(', ') || 'None'}</li>
+          <li><strong>Location Data:</strong> ${data.privacy_policy_info.data_collection.location_data || 'None'}</li>
         </ul>
         <h2>2. Purpose of Data Collection</h2>
-        <p>${data.data_purpose}</p>
+        <p>${data.privacy_policy_infodata_purpose}</p>
         <h2>3. How We Collect Data</h2>
         <p>We collect data through the following methods:</p>
         <ul>
-          ${data.collection_methods.map(method => `<li>${method}</li>`).join('')}
+          ${data.privacy_policy_infocollection_methods.map(method => `<li>${method}</li>`).join('')}
         </ul>
         <h2>4. Sharing of Data</h2>
         <p>We may share data with the following third parties:</p>
         <ul>
-          ${data.data_sharing.third_parties.map(
+          ${data.privacy_policy_info.data_sharing.third_parties.map(
             party => `<li><strong>${party.party_name}:</strong> ${party.data_shared.join(', ')} (Purpose: ${party.purpose})</li>`
           ).join('')}
         </ul>
-        <p>${data.data_sharing.legal_disclosure}</p>
+        <p>${data.privacy_policy_info.data_sharing.legal_disclosure}</p>
         <h2>5. User Rights</h2>
         <p>Users have the following rights:</p>
         <ul>
-          ${data.user_rights.map(right => `<li>${right}</li>`).join('')}
+          ${data.privacy_policy_info.user_rights.map(right => `<li>${right}</li>`).join('')}
         </ul>
-        <p>To exercise these rights, please contact us at <a href="mailto:${data.contact_email}">${data.contact_email}</a>.</p>
+        <p>To exercise these rights, please contact us at <a href="mailto:${data.contact_info.email}">${data.contact_info.email}</a>.</p>
         <h2>6. Data Security</h2>
         <p>We take the following measures to protect your data:</p>
         <ul>
-          ${data.data_security.measures.map(measure => `<li>${measure}</li>`).join('')}
+          ${data.privacy_policy_info.data_security.measures.map(measure => `<li>${measure}</li>`).join('')}
         </ul>
-        <p>${data.data_security.disclaimer}</p>
+        <p>${data.privacy_policy_info.data_security.disclaimer}</p>
         <h2>7. Changes to This Policy</h2>
-        <p>${data.policy_changes.change_notification}</p>
-        <p>${data.policy_changes.recommendation}</p>
+        <p>${data.privacy_policy_info.policy_changes.change_notification}</p>
+        <p>${data.privacy_policy_info.policy_changes.recommendation}</p>
         <h2>8. Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, please contact us:</p>
         <p>Email: <a href="mailto:${data.contact_info.email}">${data.contact_info.email}</a></p>
